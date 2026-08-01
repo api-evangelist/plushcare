@@ -1,8 +1,15 @@
 aid: plushcare
 name: PlushCare
-description: 'PlushCare is a company surfaced as a portfolio company of ggv-capital, lightspeed-venture-partners
-  and added to the API Evangelist network as a stub for enrichment. Sector: health. This profile is a
-  lead awaiting the enrichment pipeline.'
+description: 'PlushCare is a telehealth and virtual primary care platform that connects
+  patients with board-certified physicians for online doctor visits, available 24/7
+  across all 50 US states. Services include online prescriptions and refills, urgent
+  care video visits, mental health care and therapy, weight-loss management including
+  GLP-1 medications, chronic disease management, pediatric and preventive care, and
+  sexual health. Founded in 2014 and headquartered in San Francisco, PlushCare accepts
+  most major insurance and offers self-pay memberships. It was surfaced as a portfolio
+  company of GGV Capital and Lightspeed Venture Partners. As a consumer telehealth
+  service, PlushCare publishes no public developer API, developer portal, or SDKs;
+  this profile captures its public web and domain-security surface.'
 url: https://raw.githubusercontent.com/api-evangelist/plushcare/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +18,30 @@ x-backed-by:
 - lightspeed-venture-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Health
+- Telehealth
+- Telemedicine
+- Healthcare
+- Primary Care
+- Digital Health
+- Mental Health
+image: https://plushcare.com/
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -24,5 +49,20 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/plushcare-domain-security.yml
 - type: Website
   url: https://plushcare.com/
+- type: Support
+  url: https://support.plushcare.com/hc/en-us
+- type: Blog
+  url: https://plushcare.com/blog
+- type: TermsOfService
+  url: https://plushcare.com/terms
+- type: PrivacyPolicy
+  url: https://plushcare.com/privacy
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
