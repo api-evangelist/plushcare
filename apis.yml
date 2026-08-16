@@ -1,21 +1,38 @@
 aid: plushcare
 name: PlushCare
-description: 'PlushCare is a telehealth and virtual primary care platform that connects
-  patients with board-certified physicians for online doctor visits, available 24/7
-  across all 50 US states. Services include online prescriptions and refills, urgent
-  care video visits, mental health care and therapy, weight-loss management including
-  GLP-1 medications, chronic disease management, pediatric and preventive care, and
-  sexual health. Founded in 2014 and headquartered in San Francisco, PlushCare accepts
-  most major insurance and offers self-pay memberships. It was surfaced as a portfolio
-  company of GGV Capital and Lightspeed Venture Partners. As a consumer telehealth
-  service, PlushCare publishes no public developer API, developer portal, or SDKs;
-  this profile captures its public web and domain-security surface.'
+description: 'PlushCare is a direct-to-consumer telehealth and virtual primary care
+  service that connects patients with board-certified physicians for online doctor
+  visits, available 24/7 across all 50 US states. Services include online prescriptions
+  and refills, urgent care video visits, mental health care and therapy, weight-loss
+  management including GLP-1 medications, chronic disease management, pediatric and
+  preventive care, and sexual health. Founded in 2014 in San Francisco by Dr. James
+  Wantuck and Ryan McQuaid, PlushCare accepts most major insurance and sells a $19.99/month
+  patient membership. Ownership has changed three times: Accolade acquired PlushCare
+  in 2021, Transcarent acquired Accolade in 2025, and effective 2026-07-31 PlushCare,
+  Inc. became a subsidiary of Fabric Labs, Inc. As a consumer telehealth service,
+  PlushCare publishes no public developer API, developer portal, API reference, SDK,
+  MCP server or agent card; its one live API host, api.plushcare.com, is the patient
+  app''s own private Django REST Framework backend and returns 403 anonymously. This
+  profile captures its public web, pricing, compliance and domain-security surface.'
 url: https://raw.githubusercontent.com/api-evangelist/plushcare/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - ggv-capital
 - lightspeed-venture-partners
+x-parent-company:
+  name: Fabric Labs, Inc.
+  website: https://www.fabrichealth.com/
+  effective: '2026-07-31'
+  source: https://plushcare.com/terms
+  history:
+  - acquirer: Accolade
+    year: 2021
+  - acquirer: Transcarent
+    year: 2025
+    note: Transcarent acquired Accolade, PlushCare's then-parent.
+  - acquirer: Fabric Labs, Inc.
+    year: 2026
 x-tier: stub
 x-tier-reason: portfolio-lead
 accessModel:
@@ -27,11 +44,16 @@ accessModel:
   label: Unknown
   confidence: low
   source: []
-  generated: '2026-07-22'
+  generated: '2026-08-15'
   method: derived
+  note: >-
+    accessModel describes how a DEVELOPER gets in. PlushCare publishes no API, so
+    there is no developer access model to derive — it stays unknown deliberately.
+    The $19.99/month figure in plans/plushcare-plans-pricing.yml is a PATIENT
+    membership price, not an API plan, and must not be read as one.
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-15'
 tags:
 - Company
 - Health
@@ -41,7 +63,9 @@ tags:
 - Primary Care
 - Digital Health
 - Mental Health
-image: https://plushcare.com/
+- Virtual Care
+- Consumer Health
+image: https://plushcare.com/hubfs/Logos/logo-plushcare.svg
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -61,8 +85,48 @@ common:
   url: https://plushcare.com/terms
 - type: PrivacyPolicy
   url: https://plushcare.com/privacy
+- type: Pricing
+  url: https://plushcare.com/membership
+- type: Login
+  url: https://my.plushcare.com/login
+- type: Plans
+  url: plans/plushcare-plans-pricing.yml
+- type: Conformance
+  url: conformance/plushcare-conformance.yml
+- type: Compliance
+  url: conformance/plushcare-conformance.yml
+- type: Lifecycle
+  url: lifecycle/plushcare-lifecycle.yml
+- type: LLMsTxt
+  url: llms/plushcare-llms.txt
 x-enrichment:
-  date: '2026-07-20'
+  date: '2026-08-15'
   status: minimal
-  artifacts_added: 1
+  artifacts_added: 6
   pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    PlushCare ships only an end-user telehealth product; the single live API host,
+    api.plushcare.com, is the patient app's own Django REST Framework backend whose
+    router root advertises one collection (/users/) that returns 403 anonymously,
+    and every schema path on it (/openapi.json, /swagger.json, /schema/, /docs,
+    /redoc) returns 404, with no developer portal, docs host, SDK or package
+    anywhere.
+  evidence:
+  - url: https://api.plushcare.com/
+    status: 200
+  - url: https://api.plushcare.com/users/
+    status: 403
+  - url: https://api.plushcare.com/openapi.json
+    status: 404
+  - url: https://developer.plushcare.com/
+    status: 404
+  - url: https://docs.plushcare.com/
+    status: 404
+  - url: https://plushcare.com/developers
+    status: 404
+  - url: https://plushcare.com/.well-known/agent-card.json
+    status: 404
+  checked: '2026-08-15'
