@@ -1,0 +1,54 @@
+generated: '2026-08-15'
+method: probed
+source: live probes of status.plushcare.com, plushcare.com and api.plushcare.com
+note: >-
+  PlushCare publishes no API, so there is no API versioning policy, no deprecation
+  policy and no SLA to record. The one lifecycle surface that exists is an
+  Atlassian Statuspage that the company PROVISIONED BUT NEVER TURNED ON —
+  status.plushcare.com resolves and 302s to https://plushcare1.statuspage.io,
+  which lands on /inactive with the title "PlushCare Status - Page Inactive" and
+  the body "This page is currently inactive and can only be viewed by team
+  members." Because the page serves no status to the public, NO `StatusPage`
+  pointer is emitted in apis.yml, and no `Deprecation` pointer either. This file
+  records the absence and the reason.
+versioning:
+  policy_published: false
+  scheme: null
+  source: null
+  note: >-
+    api.plushcare.com carries no version segment in its router root
+    ({"users": "https://api.plushcare.com/users/"}) and /v1/ paths 404. The
+    /health/ endpoint does expose a build identifier
+    (build "c69761-9107") but that is a deploy stamp, not a public API version.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  source: null
+sla:
+  published: false
+  source: null
+status_page:
+  exists: true
+  active: false
+  url: https://status.plushcare.com/
+  resolved_to: https://plushcare1.statuspage.io/inactive
+  platform: Atlassian Statuspage
+  http_status: 200
+  title: PlushCare Status - Page Inactive
+  public_status_served: false
+  api_endpoints_probed:
+  - path: /api/v2/summary.json
+    status: 302
+  - path: /api/v2/status.json
+    status: 302
+  - path: /history.json
+    status: 302
+  checked: '2026-08-15'
+changelog:
+  published: false
+  source: null
+  note: No dated product or API changelog was found on plushcare.com or in its 1,095-URL
+    sitemap.

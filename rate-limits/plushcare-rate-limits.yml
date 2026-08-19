@@ -1,0 +1,31 @@
+generated: '2026-08-15'
+method: searched
+source: https://plushcare.com/ (site + sitemap search), https://api.plushcare.com/ (live probe)
+note: >-
+  An honest zero. PlushCare publishes no API documentation of any kind, so there
+  is no published rate limit to record. The one live API host,
+  https://api.plushcare.com, is the consumer app's own Django REST Framework
+  backend: its root returns {"users": "https://api.plushcare.com/users/"} and the
+  single advertised collection returns 403 {"detail":"You do not have permission
+  to perform this action."} anonymously. No RateLimit-*, X-RateLimit-* or
+  Retry-After header was observed on any anonymous response from that host, and
+  no 429 was reached. Because nothing is published and no runtime signal was
+  observed, NO `RateLimits` pointer is emitted in apis.yml — wiring one would
+  credit PlushCare with a rate-limit signal it does not serve.
+limit_count: 0
+limits: []
+headers_observed: []
+status_code_on_exhaustion: null
+probes:
+- url: https://api.plushcare.com/
+  status: 200
+  rate_limit_headers: []
+  observed: '2026-08-15'
+- url: https://api.plushcare.com/users/
+  status: 403
+  rate_limit_headers: []
+  observed: '2026-08-15'
+- url: https://api.plushcare.com/health/
+  status: 200
+  rate_limit_headers: []
+  observed: '2026-08-15'

@@ -1,0 +1,126 @@
+generated: '2026-08-15'
+method: probed
+source: live HTTP probes of plushcare.com, api.plushcare.com and my.plushcare.com
+note: >-
+  Every RFC-registered discovery path was probed on all three PlushCare hosts and
+  NOT ONE returned a real document. plushcare.com (HubSpot CMS) and
+  api.plushcare.com (the consumer app's Django REST Framework backend) return a
+  hard 404 for all eight paths. my.plushcare.com returns HTTP 200 for all eight,
+  but that is a Next.js single-page-app catch-all, not a served document: the
+  content-type is text/html, the body is the app shell, and a deliberately bogus
+  control path (/.well-known/definitely-not-real-xyz123) returns the identical
+  200 HTML. Those 200s are soft-404s and are recorded as misses. Because no path
+  carried a real document, NO WellKnown, SecurityTxt or AgentCard pointer is
+  emitted in apis.yml — this file records a verified absence, not a presence.
+hosts:
+- host: https://plushcare.com
+  server: HubSpot CMS
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: https://api.plushcare.com
+  server: Django REST Framework behind Envoy/Cloudflare
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: https://my.plushcare.com
+  server: Next.js SPA behind Cloudflare
+  soft_404: true
+  soft_404_evidence:
+    control_path: /.well-known/definitely-not-real-xyz123
+    control_status: 200
+    control_content_type: text/html; charset=utf-8
+    conclusion: >-
+      The host answers 200 with the app shell for any path, so a 200 on a
+      well-known path is not evidence of a served document.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html; charset=utf-8
+    real_document: false
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html; charset=utf-8
+    real_document: false
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html; charset=utf-8
+    real_document: false
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: text/html; charset=utf-8
+    real_document: false
+    file: null
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: text/html; charset=utf-8
+    real_document: false
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    content_type: text/html; charset=utf-8
+    real_document: false
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 200
+    content_type: text/html; charset=utf-8
+    real_document: false
+    file: null
+  - path: /.well-known/agent.json
+    status: 200
+    content_type: text/html; charset=utf-8
+    real_document: false
+    file: null
+summary:
+  paths_probed: 24
+  real_documents_found: 0
+  soft_200s: 8
+  hard_404s: 16
+  pointers_emitted: []

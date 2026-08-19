@@ -1,0 +1,110 @@
+generated: '2026-08-15'
+method: searched
+source: https://plushcare.com/hipaa-notice-of-privacy-practices, https://plushcare.com/consumer-health-data-privacy-policy,
+  https://plushcare.com/privacy, https://plushcare.com/terms
+note: >-
+  PlushCare publishes no API, so there is no API-technical conformance to assert —
+  no OpenAPI, no OAuth/OIDC discovery, no FHIR endpoint, no RFC 9457 problem+json,
+  no idempotency or pagination convention was found on any host. What PlushCare
+  DOES publish is a substantial healthcare REGULATORY compliance surface: a HIPAA
+  Joint Notice of Privacy Practices naming the covered entities and the organized
+  health care arrangement, a separate state consumer-health-data notice for
+  Washington and Nevada, and a HIPAA trust badge in the site footer. Those are
+  the entries recorded below, each with a first-party URL. No SOC 2, ISO 27001,
+  HITRUST or PCI attestation is published anywhere on plushcare.com and none was
+  found in search — recorded as conforms: false rather than omitted.
+entity:
+  legal_name: PlushCare, Inc.
+  jurisdiction: Delaware corporation
+  parent: Fabric Labs, Inc.
+  parent_effective: '2026-07-31'
+  parent_source: https://plushcare.com/terms
+standards:
+- id: hipaa
+  name: Health Insurance Portability and Accountability Act
+  conforms: true
+  evidence:
+    url: https://plushcare.com/hipaa-notice-of-privacy-practices
+    http_status: 200
+    detail: >-
+      PlushCare publishes a Joint Notice of Privacy Practices covering the
+      physician-owned professional corporations that deliver care (Health & Care
+      Medical, P.C. and its state entities, PlushCare of California, Inc., P.C.,
+      SAMG, Inc.) as participants in an organized health care arrangement. A
+      HIPAA badge is also served in the site footer
+      (https://plushcare.com/hubfs/Logos/hipaa.svg).
+    checked: '2026-08-15'
+- id: state-consumer-health-data
+  name: State consumer health data privacy laws (Washington, Nevada)
+  conforms: true
+  evidence:
+    url: https://plushcare.com/consumer-health-data-privacy-policy
+    http_status: 200
+    detail: >-
+      Consumer Health Data Privacy Notice, last updated 2026-07-31, published by
+      "Fabric Labs, Inc., PlushCare, Inc., and the physician-owned professional
+      corporations". Covers health-related information "not regulated by HIPAA,
+      but rather state consumer health privacy laws such as those in Washington
+      and Nevada". The statutes are referenced by state, not cited by name.
+    checked: '2026-08-15'
+- id: ccpa-cpra
+  name: California Consumer Privacy Act / CPRA
+  conforms: true
+  evidence:
+    url: https://plushcare.com/california-consumers-privacy-policy
+    http_status: 200
+    detail: A California-consumer-specific privacy policy is published as a distinct
+      document.
+    checked: '2026-08-15'
+- id: soc2
+  name: SOC 2
+  conforms: false
+  evidence:
+    detail: >-
+      No SOC 2 report, badge or trust-center reference published. https://plushcare.com/trust
+      404, https://plushcare.com/security 404, trust.plushcare.com 404.
+    checked: '2026-08-15'
+- id: hitrust
+  name: HITRUST CSF
+  conforms: false
+  evidence:
+    detail: No HITRUST certification claim found on plushcare.com or in web search.
+    checked: '2026-08-15'
+- id: iso27001
+  name: ISO/IEC 27001
+  conforms: false
+  evidence:
+    detail: No ISO 27001 certification claim found.
+    checked: '2026-08-15'
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence:
+    detail: >-
+      /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource
+      return 404 on plushcare.com and api.plushcare.com. No public OAuth surface.
+    checked: '2026-08-15'
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence:
+    detail: /.well-known/openid-configuration returns 404 on every PlushCare host.
+    checked: '2026-08-15'
+- id: fhir
+  name: HL7 FHIR
+  conforms: false
+  evidence:
+    detail: >-
+      No FHIR base URL, CapabilityStatement or /metadata endpoint found.
+      api.plushcare.com advertises a single non-FHIR collection (/users/) from a
+      Django REST Framework router root.
+    checked: '2026-08-15'
+- id: rfc9457
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence:
+    detail: >-
+      api.plushcare.com returns a Django REST Framework error envelope
+      ({"detail": "..."}) with content-type application/json, not
+      application/problem+json.
+    checked: '2026-08-15'

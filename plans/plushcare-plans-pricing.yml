@@ -1,0 +1,58 @@
+generated: '2026-08-15'
+method: searched
+source: https://plushcare.com/membership
+note: >-
+  PlushCare is a consumer telehealth service, so its published plans are PATIENT
+  membership tiers, not API plans. There is no developer plan, no API pricing and
+  no usage-metered tier, because PlushCare publishes no public API. Prices below
+  are quoted verbatim from the public membership page; visit fees are separate
+  from the membership fee and vary by insurance status.
+plan_count: 1
+currency: USD
+plans:
+- name: PlushCare Membership
+  price: 19.99
+  currency: USD
+  billing_period: month
+  trial: first month free
+  audience: patient
+  included:
+  - Appointments available in as soon as 15 minutes, day and night
+  - Unlimited messages with your Care Team
+  - Prescription discount card to save up to 80%
+  - Exclusive lab test discounts
+  - Free family memberships
+  cancellation: Cancel anytime
+  limits: []
+  overage: null
+  source: https://plushcare.com/membership
+visit_fees:
+- scenario: with in-network insurance
+  price: 30.00
+  currency: USD
+  basis: per visit
+  note: '"Most patients with in-network insurance pay $30 or less" — copay typically
+    matches an office visit.'
+  source: https://plushcare.com/membership
+- scenario: without insurance (self-pay)
+  price: 129.00
+  currency: USD
+  basis: initial visit
+  source: https://plushcare.com/membership
+excluded_from_membership:
+- medication costs
+- lab work costs
+insurance:
+  accepted: true
+  named_payers:
+  - Aetna
+  - Humana
+  - Cigna
+  source: https://plushcare.com/membership
+api_plans:
+  published: false
+  note: >-
+    No developer plan, API key tier, rate-limited free tier or usage pricing is
+    published anywhere on plushcare.com. Probed 2026-08-15:
+    https://plushcare.com/pricing 404, https://plushcare.com/developers 404,
+    https://plushcare.com/api 404, https://developer.plushcare.com/ 404.
