@@ -51,7 +51,7 @@ accessModel:
     there is no developer access model to derive — it stays unknown deliberately.
     The $19.99/month figure in plans/plushcare-plans-pricing.yml is a PATIENT
     membership price, not an API plan, and must not be read as one.
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-08-15'
 tags:
