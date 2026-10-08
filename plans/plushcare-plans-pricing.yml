@@ -56,3 +56,16 @@ api_plans:
     published anywhere on plushcare.com. Probed 2026-08-15:
     https://plushcare.com/pricing 404, https://plushcare.com/developers 404,
     https://plushcare.com/api 404, https://developer.plushcare.com/ 404.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: PlushCare Membership
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
